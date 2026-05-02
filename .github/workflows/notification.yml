@@ -18,3 +18,4 @@ jobs:
           body: "Se detectó un push en la rama ${{ github.ref_name }}."
           to: bryan.amador@iteso.mx
           from: GitHub Actions
+          secure: false
