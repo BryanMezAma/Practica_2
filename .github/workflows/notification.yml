@@ -1,0 +1,20 @@
+name: Notificacion por Correo
+on:
+  push:
+    branches: [ "main", "feature_a", "feature_b" ] 
+
+jobs:
+  envio_correo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar correo
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.office365.com 
+          server_port: 587
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "Cambios subidos a rama ${{ github.ref_name }}" 
+          body: "Se detectó un push en la rama ${{ github.ref_name }}."
+          to: bryan.amador@iteso.mx
+          from: GitHub Actions
